@@ -1,74 +1,89 @@
 ---
-title: Add-ons
-description: A pretty explained guide on how to make your own add-ons.
+title: Building Your Add-ons
+description: Create addons, extend the package and push the capabilities of your projects.
 ---
 
-import { FileTree } from '@astrojs/starlight/components';
+import { FileTree, Tabs, TabItem, Steps } from '@astrojs/starlight/components';
 
-**Add-ons** are the best way to extend **easy-api.ts** capabilities
-by bringing an easy-to-understand API.
+## Architecture Overview
+Understanding the add-on lifecycle is crucial for building robust extensions. Each add-on follows a three-phase initialization sequence:
+<Steps>
+1. **Discovery** - The API scans registered add-ons
+2. **Instantiation** - Add-on constructors execute
+3. **Initialization** - The `init()` method receives the API instance
+</Steps>
 
-## Placing the add-on
-You must place **add-on** files some where. Let's look an example.
-<FileTree>
-- index.js Your API **main file**
-- my_custom_addon
-  - functions
-    - betterLog.js
-  - **index.js**
-- routes
-  - hello.js
-- package.json
-</FileTree>
+## File Structure Patterns
+Choose the structure that best fits your add-on's complexity:
+<Tabs>
+  <TabItem label="Simple Add-on">
+    <FileTree>
+      - MyBasicAddon
+        - **index.js**
+        - utils.js
+        - package.json
+    </FileTree>
+  </TabItem>
+  <TabItem label="Complex Add-on">
+    <FileTree>
+      - MyComplexAddon
+        - **index.js**
+        - src
+          - middleware
+            - auth.js
+            - logger.js
+          - functions
+            - customHelper.js
+          - hooks
+            - preRoute.js
+        - tests
+          - addon.test.js
+        - package.json
+        - README.md
+    </FileTree>
+  </TabItem>
+</Tabs>
 
-## Creating your add-on
-To create an **add-on**, you must require the `Addon` class in
-order to extend it and add custom functionality.
+## Implementation Blueprint
+### Base Add-on Structure
+The next example assumes that you are in `MyBasicAddon/index.js` file.
 ```js
-// /my_custom_addon/index.js
-var { Addon } = require("easy-api.ts");
+/** @import { API } from "easy-api.ts" */
+const { Addon } = require("easy-api.ts")
 
-module.exports = class MyCustomAddon extends Addon {
-    name = "myCustomAddon"; // Set the name of your add-on.
-    description = "..."; // A brief description about your add-on.
-    version = "1.0.0"; // The version of your addon.
-    // ^ all these properties are required.
+class MyBasicAddon extends Addon {
+    name = "@eats/example"
+    description = "My awesome addon description."
+    version = "1.0.0"
 
     /**
-     * Starts the addon "init" protocol.
-     * @param {import("easy-api.ts").API} api
-     * @returns {void}
-    */
+     * Starts the addon initialization protocol.
+     * @param {API} api The API instance.
+     */
     init(api) {
-        // Logic here...
+        // Addon initialization implementation...
+
+        // TIP:
+        // You can load custom functions through the addon using
+        // api.functions.load(dir: string)
     }
-};
-```
-:::tip[Tip]
-To load custom functions that your **add-on can include**,
-use the `<API>.functions.load` method.
-```js
-init(api) {
-    api.functions.load(__dirname + "/functions");
 }
-```
-:::
 
-Now, let's attach the **add-on** into the API.
+module.exports = MyBasicAddon
+```
+### Register The Add-on
+You need to import the addon in your main file and define an `Addon` array inside API constructor.
+The next example assumes that you are in `index.js` file.
 ```js
-// /index.js
-var MyCustomAddon = require("./my_custom_addon");
-var { API } = require("easy-api.ts");
+const MyBasicAddon = require("./MyBasicAddon")
+const { API } = require("easy-api.ts")
 
-var api = new API({
+const api = new API({
     addons: [
-        new MyCustomAddon(),
+        new MyBasicAddon(),
     ],
-    dots: false,
-    reverse: false
-});
-
-// ...
+    // ...
+})
 ```
-**Congratulations!** You've done the basic logic for
-your first add-on.
+Congratulations!
+You made your first easy-api.ts addon!
