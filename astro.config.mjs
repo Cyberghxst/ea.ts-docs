@@ -9,8 +9,8 @@ const EATS_CUSTOM_LANG = JSON.parse(readFileSync('./grammar.json', 'utf-8'));
 
 // https://astro.build/config
 export default defineConfig({
-	// site: 'https://cyberghxst.github.io',
-	// base: '/ea.ts-docs',
+	site: 'https://cyberghxst.github.io',
+	base: '/ea.ts-docs',
 	integrations: [
 		starlight({
 			title: 'easy-api.ts | Documentation',
