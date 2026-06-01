@@ -39,7 +39,7 @@ export default defineConfig({
 			],
 			plugins: [
 				lucode({
-					footerText: 'Powered by Lucode',
+					footerText: 'Imagine an API',
 				})
 			],
 		}),
