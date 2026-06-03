@@ -11,7 +11,7 @@ You can use both syntaxes in each code, but you can set a
 default one in API constructor options under `dots` property.
 ```js
 // /index.js
-var api = new API({
+const api = new API({
     dots: Boolean // true for "dotted" style, false for old.
 });
 ```

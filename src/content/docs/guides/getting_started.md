@@ -26,10 +26,10 @@ ideas from mind to reality.
 
 ```js
 // ./index.js
-var { API } = require("easy-api.ts");
+const { API } = require("easy-api.ts");
 // ^ requiring the main hub of the API.
 
-var api = new API({
+const api = new API({
     dots: false, // Selects the available syntax styles, check "syntax" guide for further information.
     reverse: false, // Whether enable/disable reverse reading.
 });

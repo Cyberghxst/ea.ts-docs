@@ -9,7 +9,7 @@ that's why creating custom functions is a thing.
 ## Creating your first custom function
 We need to require the following classes and enums from the library.
 ```js
-var { APIFunction, ParamType } = require("easy-api.ts");
+const { APIFunction, ParamType } = require("easy-api.ts");
 ```
 Now, let's extend the `APIFunction` class.
 We will make an `owoify` function for this example.
@@ -47,7 +47,7 @@ exports.default = AnyName;
 To load your custom function, you can use the `load` method of the function manager.
 ```js
 // /index.js
-var api = new API(...);
+const api = new API(...);
 
 api.functions.load("<path to function>");
 

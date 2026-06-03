@@ -100,10 +100,10 @@ module.exports = CustomDatabase
 ## Attaching the database
 You simply must fill the database options in API constructor.
 ```js
-var CustomDatabase = require('./path/to/my/custom/database/class')
-var { APIFunction, API } = require('easy-api.ts')
+const CustomDatabase = require('./path/to/my/custom/database/class')
+const { APIFunction, API } = require('easy-api.ts')
 
-var api = new API({
+const api = new API({
     dots: false,
     reverse: false,
     databaseOptions: {
