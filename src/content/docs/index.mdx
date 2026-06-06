@@ -1,14 +1,54 @@
 ---
-title: easy-api.ts
-description: API docs, examples, and guides.
+title: Home
 template: splash
-hero:
-  layout: split-left
-  announcement:
-    text: Version 3.8.5 is ready
-    link: https://www.npmjs.com/package/easy-api.ts
-  actions:
-    - text: Get started
-      link: /ea.ts-docs/guides/getting_started/
-      icon: right-arrow
 ---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+# easy-api.ts
+
+Create APIs using a simple DSL powered by Fastify.
+
+<CardGrid stagger>
+  <Card
+    title="Easy to Learn"
+    icon="seti:javascript"
+  >
+    Start building APIs without learning a complete backend framework.
+  </Card>
+
+  <Card
+    title="Fastify Powered"
+    icon="lucide:zap"
+  >
+    Built on top of Fastify for performance and reliability.
+  </Card>
+
+  <Card
+    title="Image Manipulation"
+    icon="lucide:image"
+  >
+    Generate and modify images directly from your API routes.
+  </Card>
+
+  <Card
+    title="Custom Functions"
+    icon="lucide:puzzle"
+  >
+    Extend the language with your own functions and scoped APIs.
+  </Card>
+
+  <Card
+    title="Multiple Syntax Styles"
+    icon="lucide:code"
+  >
+    Choose between classic and colon syntax styles.
+  </Card>
+
+  <Card
+    title="Reverse Reading"
+    icon="lucide:arrow-up-down"
+  >
+    Execute code from bottom to top using experimental reverse mode.
+  </Card>
+</CardGrid>

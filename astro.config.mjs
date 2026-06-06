@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import lucode from 'lucode-starlight';
+import { ion } from "starlight-ion-theme";
 import { bundledLanguages } from 'shiki';
 import { readFileSync } from 'fs';
 
@@ -40,9 +40,7 @@ export default defineConfig({
 				}
 			],
 			plugins: [
-				lucode({
-					footerText: 'Imagine an API',
-				})
+				ion()
 			],
 		}),
 	],
