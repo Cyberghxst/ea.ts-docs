@@ -13,8 +13,11 @@ export default defineConfig({
 	base: '/ea.ts-docs',
 	integrations: [
 		starlight({
-			title: 'easy-api.ts | Documentation',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+			title: 'easy-api.ts',
+			social: [
+				{ icon: 'github', label: 'GitHub', href: 'https://github.com/Cyberghxst/ea.ts-docs' },
+				{ icon: 'npm', label: 'npm', href: 'https://www.npmjs.com/package/easy-api.ts' }
+			],
 			sidebar: [
 				{
 					label: 'Guides',

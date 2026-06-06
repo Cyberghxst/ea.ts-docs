@@ -1,22 +1,43 @@
 ---
 title: Home
 template: splash
-
-hero:
-  title: easy-api.ts
-  tagline: Create APIs using a simple DSL powered by Fastify.
-
-  actions:
-    - text: Getting Started
-      link: /ea.ts-docs/guides/getting_started
-      icon: right-arrow
-
-    - text: npm
-      link: https://www.npmjs.com/package/easy-api.ts
-      icon: external
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
+import Logo from '../../assets/eats.png';
+
+<div style="text-align:center; margin: 2rem 0 3rem;">
+  <div
+    style="
+        display: flex;
+        justify-content: center;
+    "
+>
+    <img
+        src={Logo.src}
+        alt="easy-api.ts"
+        width="250"
+    />
+</div>
+
+  <p style="font-size:1.25rem; margin-top:1rem;">
+    Create APIs using a simple DSL powered by Fastify.
+  </p>
+
+  <div style="margin-top:2rem;">
+    <a class="sl-link-button primary" href="/ea.ts-docs/guides/getting_started/">
+      Getting Started →
+    </a>
+
+    <a
+      class="sl-link-button"
+      href="https://npmjs.com/package/easy-api.ts"
+      style="margin-left:1rem;"
+    >
+      npm ↗
+    </a>
+  </div>
+</div>
 
 ## Features
 
