@@ -1,54 +1,58 @@
 ---
 title: Home
 template: splash
+
+hero:
+  title: easy-api.ts
+  tagline: Create APIs using a simple DSL powered by Fastify.
+
+  actions:
+    - text: Getting Started
+      link: /guides/getting-started/
+      icon: right-arrow
+
+    - text: npm
+      link: https://www.npmjs.com/package/easy-api.ts
+      icon: external
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
-# easy-api.ts
-
-Create APIs using a simple DSL powered by Fastify.
+## Features
 
 <CardGrid stagger>
-  <Card
-    title="Easy to Learn"
-    icon="seti:javascript"
-  >
-    Start building APIs without learning a complete backend framework.
+  <Card title="Easy to Learn" icon="lucide:book-open">
+    Build APIs without dealing with backend boilerplate.
   </Card>
 
-  <Card
-    title="Fastify Powered"
-    icon="lucide:zap"
-  >
-    Built on top of Fastify for performance and reliability.
+  <Card title="Fastify Powered" icon="lucide:zap">
+    Built on top of Fastify for speed and reliability.
   </Card>
 
-  <Card
-    title="Image Manipulation"
-    icon="lucide:image"
-  >
-    Generate and modify images directly from your API routes.
+  <Card title="Custom Functions" icon="lucide:puzzle">
+    Extend the language with your own functions.
   </Card>
 
-  <Card
-    title="Custom Functions"
-    icon="lucide:puzzle"
-  >
-    Extend the language with your own functions and scoped APIs.
+  <Card title="Scoped Functions" icon="lucide:layers">
+    Create context-aware DSLs with scoped execution.
   </Card>
 
-  <Card
-    title="Multiple Syntax Styles"
-    icon="lucide:code"
-  >
-    Choose between classic and colon syntax styles.
+  <Card title="Image Manipulation" icon="lucide:image">
+    Generate and modify images directly from your routes.
   </Card>
 
-  <Card
-    title="Reverse Reading"
-    icon="lucide:arrow-up-down"
-  >
-    Execute code from bottom to top using experimental reverse mode.
+  <Card title="Reverse Reading" icon="lucide:arrow-up-down">
+    Experimental bottom-to-top execution mode.
   </Card>
 </CardGrid>
+
+## Quick Example
+
+```eats
+$reply[
+    $setCode[200]
+    $setType[json]
+    $setBody[{
+        "hello": "world"
+    }]
+]
