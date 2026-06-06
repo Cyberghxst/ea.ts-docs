@@ -3,28 +3,65 @@ title: Conditional Statements
 description: Brief guide on how to use "$stmt".
 ---
 
-As a new feature of **ea.ts**, we have added **$stmt**. This is a function
-that lets you evaluate multiple conditional statements at once.
+# Conditional Statements
+The `$stmt` function allows multiple conditional branches to be evaluated as a single statement block.
+It is designed to group `$if`, `$elseif`, and `$else` conditions together, making complex decision logic easier to read and maintain.
+
+## Basic Example
 ```eats
-$ignore[Declaring the variable to work with.]
 $let[myValue;bedwars]
 
-$ignore[Conditional statement starts here.]
 $stmt[
     $if[$get[myValue]==skyblock;
-        ...my code
+        SkyBlock selected.
     ]
-    $elseif[$get[myValue]==aidk;
-        ...my code
+
+    $elseif[$get[myValue]==bedwars;
+        BedWars selected.
     ]
+
     $else[
-        ...my code
+        Unknown game mode.
     ]
 ]
 ```
 
-:::danger
-**$stmt** just allows the execution of **$if**, **$elseif** and **$else** inside its scope.
+In this example:
+* If `myValue` is `skyblock`, the first branch is executed.
+* If `myValue` is `bedwars`, the second branch is executed.
+* If none of the conditions match, the `$else` branch is executed.
 
-If you put another function, **it will throw an error**.
-:::
+## Supported Functions
+Only the following functions can be used directly inside a `$stmt` block:
+* `$if`
+* `$elseif`
+* `$else`
+
+Example:
+```eats
+$stmt[
+    $if[condition;
+        ...
+    ]
+
+    $elseif[anotherCondition;
+        ...
+    ]
+
+    $else[
+        ...
+    ]
+]
+```
+
+## Invalid Example
+```eats
+$stmt[
+    $log[Hello]
+
+    $if[condition;
+        ...
+    ]
+]
+```
+The example above is invalid because `$log` is not a supported statement inside `$stmt`.

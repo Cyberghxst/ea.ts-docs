@@ -2,39 +2,49 @@
 title: Getting Started
 description: A simple but effective guide about how to start making API with ease.
 ---
-
 ![easy-api.ts banner](../../../assets/eats-banner.jpg)
 
-**easy-api.ts** is a tiny but powerful library to create simple
-APIs easily, written in TypeScript and taking the boundaries of
-string-based interpreted languages, allows you to take all your
-ideas from mind to reality.
+## Getting Started
+
+**easy-api.ts** is a lightweight framework for building APIs using a simple string-based DSL while leveraging the performance and reliability of Fastify under the hood.
+
+Whether you're creating small projects, prototypes, or production-ready APIs, easy-api.ts allows you to focus on your application logic without dealing with complex backend boilerplate.
 
 ## Features
 
--   📝 Easy to learn.
--   📚 Constant updates.
--   🔥 Image manipulation.
--   🚀 Optimized and advanced codes and functions.
+* 📝 Beginner-friendly syntax.
+* ⚡ Fast and lightweight.
+* 🚀 Built on top of Fastify.
+* 🔥 Built-in image manipulation functions.
+* 📚 Regular updates and improvements.
+* 🎯 Designed for rapid API development.
 
 ## Requirements
 
--   Basic understanding of [JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript).
--   [Node.JS](https://nodejs.org/) installed on your machine.
+Before getting started, make sure you have:
+
+* Basic knowledge of JavaScript.
+* Node.js installed on your machine.
+* A package manager such as npm, pnpm, or yarn.
+
+## Installation
+
+```bash
+npm install easy-api.ts
+```
 
 ## Basic Setup
 
+Create a new file named `index.js`:
+
 ```js
-// ./index.js
 const { API } = require("easy-api.ts");
-// ^ requiring the main hub of the API.
 
 const api = new API({
-    dots: false, // Selects the available syntax styles, check "syntax" guide for further information.
-    reverse: false, // Whether enable/disable reverse reading.
+    dots: false,
+    reverse: false,
 });
 
-// Adding a simple "hello" route.
 api.route({
     url: "/hello",
     method: "get",
@@ -49,13 +59,22 @@ api.route({
     `,
 });
 
-// Let the API connect using the given host address and port.
 api.connect({
-    host: String,
-    port: Number,
+    host: "localhost",
+    port: 3000,
 });
 ```
 
-:::note
-**easy-api.ts** is a wrapper of [Fastify](https://fastify.dev).
-:::
+Start your application and visit:
+
+```txt
+http://localhost:3000/hello
+```
+
+Response:
+
+```json
+{
+    "hello": "world"
+}
+```

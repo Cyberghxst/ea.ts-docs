@@ -1,38 +1,149 @@
 {
-    "name": "eats",
-    "scopeName": "src.eats",
-    "patterns": [{
-        "include": "#commentPattern"
-    }],
-    "repository": {
-        "commentPattern": {
-            "patterns": [{
-                "begin": "\\$(ignore|c|comment)\\[",
-                "beginCaptures": {
-                    "1": {
-                        "name": "comment.func.eats"
-                    }
-                },
-                "end": "\\]",
-                "endCaptures": {
-                    "0": {
-                        "name": "comment.func.eats"
-                    }
-                }
-            },{
-                "begin": "\\/\\/\\s\\w",
-                "beginCaptures": {
-                    "0": {
-                        "name": "inline.comment.js"
-                    }
-                },
-                "end": "\\\n",
-                "endCaptures": {
-                    "1": {
-                        "name": "inline.comment.js"
-                    }
-                }
-            }]
-        }
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/refs/heads/master/tmlanguage.json",
+  "name": "eats",
+  "scopeName": "source.eats",
+
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#commentFunctions"
+    },
+    {
+      "include": "#escapers"
+    },
+    {
+      "include": "#placeholders"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#functions"
+    },
+    {
+      "include": "#brackets"
+    },
+    {
+      "include": "#separators"
     }
+  ],
+
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.eats",
+          "match": "//.*$"
+        }
+      ]
+    },
+
+    "commentFunctions": {
+      "patterns": [
+        {
+          "begin": "(\\$(?:ignore|c|comment))(\\[)",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.control.comment.eats"
+            },
+            "2": {
+              "name": "punctuation.section.brackets.begin.eats"
+            }
+          },
+          "end": "\\]",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.section.brackets.end.eats"
+            }
+          },
+          "contentName": "comment.block.eats"
+        }
+      ]
+    },
+
+    "escapers": {
+      "patterns": [
+        {
+          "name": "constant.character.escape.eats",
+          "match": "%(?:LEFT|RIGHT|SEMI|COLON|SPACE|AT|OR|AND|RPAREN|LPAREN|DOL)%"
+        }
+      ]
+    },
+
+    "placeholders": {
+      "patterns": [
+        {
+          "name": "variable.other.placeholder.eats",
+          "match": "%[a-zA-Z_][a-zA-Z0-9_]*%"
+        }
+      ]
+    },
+
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.eats",
+          "begin": "\"",
+          "end": "\""
+        },
+        {
+          "name": "string.quoted.single.eats",
+          "begin": "'",
+          "end": "'"
+        }
+      ]
+    },
+
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.eats",
+          "match": "\\b\\d+(?:\\.\\d+)?\\b"
+        }
+      ]
+    },
+
+    "functions": {
+      "patterns": [
+        {
+          "captures": {
+            "1": {
+              "name": "entity.name.function.eats"
+            },
+            "2": {
+              "name": "punctuation.section.brackets.begin.eats"
+            }
+          },
+          "match": "(\\$[a-zA-Z_][a-zA-Z0-9_]*)(\\[)"
+        },
+        {
+          "name": "entity.name.function.eats",
+          "match": "\\$[a-zA-Z_][a-zA-Z0-9_]*"
+        }
+      ]
+    },
+
+    "brackets": {
+      "patterns": [
+        {
+          "name": "punctuation.section.brackets.eats",
+          "match": "[\\[\\]]"
+        }
+      ]
+    },
+
+    "separators": {
+      "patterns": [
+        {
+          "name": "punctuation.separator.eats",
+          "match": ";"
+        }
+      ]
+    }
+  }
 }

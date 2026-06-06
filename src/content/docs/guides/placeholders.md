@@ -3,62 +3,137 @@ title: Function Placeholders
 description: Using placeholders in supported functions.
 ---
 
-Placeholders are values that some functions support
-to handle custom code.
+# Placeholders
 
-## Functions supporting placeholders
+Placeholders are special values that are dynamically replaced by a function during execution.
+
+They provide access to contextual data such as callback parameters, iteration values, object entries, or runtime errors.
+
+## Placeholder Reference
+
+| Placeholder | Used By |
+|-------------|---------|
+| %param_N% | $createCallback |
+| %element% | $arrayForEach |
+| %error% | $try |
+| %key% | $objectEntries |
+| %value% | $objectEntries |
+| %default% | $setBody |
+
+## Functions Supporting Placeholders
+
 ### $createCallback
-This function allows the usage of placeholders to
-handle the custom parameters of a callback.
-```eats
+
+`$createCallback` provides access to callback arguments through the `%param_N%` placeholder syntax.
+
+```eats id="g9w2k1"
 $ignore[Example]
-$createCallback[deg2rad;$calculate[%param_0% * $pi / 180]]
+
+$createCallback[
+    deg2rad;
+    $calculate[%param_0% * $pi / 180]
+]
 ```
-You must increment the number in `%param_HERE%` to
-handle the desired parameter.
+
+#### Available Placeholders
+
+| Placeholder | Description           |
+| ----------- | --------------------- |
+| `%param_0%` | First parameter       |
+| `%param_1%` | Second parameter      |
+| `%param_2%` | Third parameter       |
+| ...         | Additional parameters |
+
+---
 
 ### $arrayForEach
-This function allows the usage of placeholders to
-retrieve the value of the current element in the
-iteration.
-```eats
+
+`$arrayForEach` exposes the current element being processed through the `%element%` placeholder.
+
+```eats id="m2x8p4"
 $ignore[Example]
-$arrayCreate[fruits;Apple,Banana,Mango,Watermelon]
-$arrayForEach[fruits;
+
+$arrayCreate[
+    fruits;
+    Apple,Banana,Mango,Watermelon
+]
+
+$arrayForEach[
+    fruits;
     $log[Current element: %element%]
 ]
 ```
 
+#### Available Placeholders
+
+| Placeholder | Description           |
+| ----------- | --------------------- |
+| `%element%` | Current array element |
+
+---
+
 ### $try
-This function allows the usage of placeholders to
-retrieve the value of the error message in the
-catch block.
-```eats
+
+Inside the catch block of `$try`, the `%error%` placeholder contains the error message that caused the failure.
+
+```eats id="t7n5q9"
 $ignore[Example]
+
 $try[
     $log;
     $log[Unable to run code with reason: %error%]
 ]
 ```
 
+#### Available Placeholders
+
+| Placeholder | Description   |
+| ----------- | ------------- |
+| `%error%`   | Error message |
+
+---
+
 ### $objectEntries
-This function allows the usage of placeholders to
-retrieve the value of the current key/value in the
-iteration.
-```eats
+
+`$objectEntries` exposes both the current key and value during iteration.
+
+```eats id="p3r7v6"
 $ignore[Example]
+
 $objectCreate[user;{
-    "name": "Cyberghxst",
+    "name": "Matt",
     "age": "96",
     "joinedAt": "1972"
 }]
-$objectEntries[user;Current data: **%key%** = **%value%**.]
+
+$objectEntries[
+    user;
+    Current data: **%key%** = **%value%**
+]
 ```
 
+#### Available Placeholders
+
+| Placeholder | Description          |
+| ----------- | -------------------- |
+| `%key%`     | Current object key   |
+| `%value%`   | Current object value |
+
+---
+
 ### $setBody
-This function allows the usage of placeholders to
-handle the body of a canvas response.
-```eats
+
+When returning a canvas response, `$setBody` exposes the generated canvas output through `%default%`.
+
+```eats id="d4s1h8"
 $ignore[Example]
+
 $setBody[%default%]
 ```
+
+#### Available Placeholders
+
+| Placeholder | Description               |
+| ----------- | ------------------------- |
+| `%default%` | Generated canvas response |
+| :::         |                           |

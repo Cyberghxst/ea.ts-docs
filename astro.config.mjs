@@ -24,11 +24,13 @@ export default defineConfig({
 						{ label: 'Conditional Statements', slug: 'guides/stmt' },
 						{ label: 'Custom Databases', slug: 'guides/custom_dbs' },
 						{ label: 'Custom Functions', slug: 'guides/custom_functions' },
+						{ label: 'Loading Custom Functions', slug: 'guides/load_functions' },
 						{ label: 'Escapers', slug: 'guides/escapers' },
 						{ label: 'Not Found Handler', slug: 'guides/not_found_handler' },
 						{ label: 'Placeholders', slug: 'guides/placeholders' },
 						{ label: 'Reverse Reading', slug: 'guides/reverse_reading' },
-						{ label: 'Syntax', slug: 'guides/syntax' }
+						{ label: 'Syntax', slug: 'guides/syntax' },
+						{ label: 'Scoped Functions', slug: 'guides/scoped_functions' },
 					],
 				},
 				{
