@@ -1,7 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import { ion } from "starlight-ion-theme";
 import { bundledLanguages } from 'shiki';
 import { readFileSync } from 'fs';
 
@@ -41,10 +40,7 @@ export default defineConfig({
 					collapsed: true,
 					items: [{ autogenerate: { directory: '/functions' } }]
 				}
-			],
-			plugins: [
-				ion()
-			],
+			]
 		}),
 	],
 	markdown: {
